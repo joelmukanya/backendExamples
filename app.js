@@ -88,9 +88,42 @@ We can make use of regular expressions on expressjs.
 /index.html
 Optional: (.html)?
 */
-router.get('^/$|/index(.html)?', (req, res)=> {
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+// router.get('^/$|/index(.html)?', (req, res)=> {
+//     res.sendFile(path.join(__dirname, 'views', 'index.html'));
+// });
+// Next 
+// router.get('/about.html', (req, res, next)=> {
+//     console.log("Trying to access the about.html");
+//     next();
+// }, (req, res)=> {
+//     res.sendFile(path.join(__dirname, 'views', 'index.html'));
+// });
+// Not found
+// router.get('/*', (req, res)=> {
+//     res.sendFile(path.join(__dirname, 'views', 'error.html'));
+// });
+
+router.get('^/$|fetchUsers(.html)?', (req, res)=> {
+    res.sendFile(path.join(__dirname, 'views', 'users', 'fetchUsers.html'));
 });
+router.get('/fetchUsers/:id', (req, res)=> {
+    console.log("Retrieve a single record")
+    res.sendFile(path.join(__dirname, 'views', 'users', 'fetchUsers.html'));
+});
+// Post
+router.post('^/$|newUser(.html)?', (req, res)=> {
+    res.sendFile(path.join(__dirname, 'views', 'users', 'newUser.html'))
+});
+// Delete
+router.delete('^/$|deleteRecord(.html)?/:id', (req, res)=> {
+    res.sendFile(path.join(__dirname, 'views', 'users', 'deleteRecord.html'))
+});
+// Update
+router.put('^/$|updateUser(.html)?', (req, res)=> {
+    res.sendFile(path.join(__dirname, 'views', 'users', 'updateUser.html'))
+});
+
+
 app.use(router);
 app.listen(port, ()=> {
     console.log(`Server is running on port : ${port}`);
