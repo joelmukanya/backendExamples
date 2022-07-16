@@ -3,6 +3,7 @@
 const path = require('path')
 // const { addition } = require ('./myModule');
 const file = require('fs');
+const { format } = require('date-fns');
 // Open your terminal and run npm app
 // console.log('Hello There');
 // Example 1
@@ -44,4 +45,7 @@ const file = require('fs');
 //     if(err) throw err;
 //     console.log('Append a content to a file');
 // });
-console.log('After installing nodemon');
+// console.log('After installing nodemon');
+
+let currDate = format(new Date(), 'dd/MM/yyyy');
+console.log(currDate);
