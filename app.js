@@ -44,3 +44,4 @@ const file = require('fs');
 //     if(err) throw err;
 //     console.log('Append a content to a file');
 // });
+console.log('After installing nodemon');
