@@ -77,10 +77,20 @@ const app = express();
 // Create a router
 const router = express.Router();
 // Get method
-router.get('/', (req, res)=> {
+
+// router.get('/', (req, res)=> {
+//     res.sendFile(path.join(__dirname, 'views', 'index.html'));
+// });
+/*
+We can make use of regular expressions on expressjs.
+^/$ = must start and end with a slash
+| => or
+/index.html
+Optional: (.html)?
+*/
+router.get('^/$|/index(.html)?', (req, res)=> {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
-
 app.use(router);
 app.listen(port, ()=> {
     console.log(`Server is running on port : ${port}`);
