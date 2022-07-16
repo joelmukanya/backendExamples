@@ -4,6 +4,9 @@ const path = require('path')
 // const { addition } = require ('./myModule');
 const file = require('fs');
 const { format } = require('date-fns');
+const http = require('http'); 
+const express = require('express');
+
 // Open your terminal and run npm app
 // console.log('Hello There');
 // Example 1
@@ -47,5 +50,38 @@ const { format } = require('date-fns');
 // });
 // console.log('After installing nodemon');
 
-let currDate = format(new Date(), 'dd/MM/yyyy');
-console.log(currDate);
+// let currDate = format(new Date(), 'dd/MM/yyyy');
+// console.log(currDate);
+
+// Create a server
+// const server = http.createServer( (req, res)=> {
+//     // What will be the output format
+//     res.setHeader('Content-type', 'text/html');
+//     // To avoid issues with CORS
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     // All good
+//     res.writeHead(200);
+//     // When all is done
+//     res.end("<p>Well done</p>");
+// });
+// const port = 3000;
+
+// server.listen(port, ()=> {
+//     console.log(`Server is running at port: ${port}`);
+// });
+
+// Using express module
+// Creating an express web server app
+const port = process.env.port || 3000;
+const app = express();
+// Create a router
+const router = express.Router();
+// Get method
+router.get('/', (req, res)=> {
+    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+});
+
+app.use(router);
+app.listen(port, ()=> {
+    console.log(`Server is running on port : ${port}`);
+});
