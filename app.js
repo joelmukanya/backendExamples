@@ -1,7 +1,9 @@
 // Importing module
 // const os = require('os');
-// const path = require('path')
-const { addition } = require ('./myModule');
+const path = require('path')
+// const { addition } = require ('./myModule');
+const file = require('fs');
+const { throws } = require('assert');
 // Open your terminal and run npm app
 // console.log('Hello There');
 // Example 1
@@ -20,4 +22,26 @@ const { addition } = require ('./myModule');
 // console.log(path.parse(__filename));
 
 // Example 2
-console.log('Addition: ', addition(7, 9));
+// console.log('Addition: ', addition(7, 9));
+
+// Example 3
+file.readFile('./data.txt', 'utf8', (err, data)=>{
+    if(err) throw err;
+    // Display data
+    console.log(data);
+});
+console.log('Reading from a file');
+// Will be executed only if an error occurs
+process.on('uncaughtException', err=> {
+    console.log(err.message);
+});
+// Write to a file
+file.writeFile(path.join(__dirname,'./data.txt'), 'Example 3', err=> {
+    if(err) throw err;
+    console.log('Writing to a file');
+});
+// Append a content to a file
+file.appendFile(path.join(__dirname,'./data.txt'), '\nnew contents', err=> {
+    if(err) throw err;
+    console.log('Append a content to a file');
+});
