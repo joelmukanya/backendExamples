@@ -1,6 +1,6 @@
 // Importing module
-// const os = require('os');
-const path = require('path')
+const os = require('os');
+const path = require('path');
 // const { addition } = require ('./myModule');
 const file = require('fs');
 const { format } = require('date-fns');
@@ -16,6 +16,7 @@ const express = require('express');
 // console.log(__dirname);
 // console.log(__filename);
 // OS
+
 // console.log('OS');
 // console.log(os.type());
 // console.log(os.version());
@@ -25,6 +26,7 @@ const express = require('express');
 // console.log(path.parse(__filename));
 
 // Example 2
+// const addition = require('./myModule');
 // console.log('Addition: ', addition(7, 9));
 
 // Example 3
@@ -103,25 +105,25 @@ Optional: (.html)?
 //     res.sendFile(path.join(__dirname, 'views', 'error.html'));
 // });
 
-router.get('^/$|fetchUsers(.html)?', (req, res)=> {
-    res.sendFile(path.join(__dirname, 'views', 'users', 'fetchUsers.html'));
-});
-router.get('/fetchUsers/:id', (req, res)=> {
-    console.log("Retrieve a single record")
-    res.sendFile(path.join(__dirname, 'views', 'users', 'fetchUsers.html'));
-});
-// Post
-router.post('^/$|newUser(.html)?', (req, res)=> {
-    res.sendFile(path.join(__dirname, 'views', 'users', 'newUser.html'))
-});
+// router.get('^/$|fetchUsers(.html)?', (req, res)=> {
+//     res.sendFile(path.join(__dirname, 'views', 'users', 'fetchUsers.html'));
+// });
+// router.get('/fetchUsers/:id', (req, res)=> {
+//     console.log("Retrieve a single record")
+//     res.sendFile(path.join(__dirname, 'views', 'users', 'fetchUsers.html'));
+// });
+// // Post
+// router.post('^/$|newUser(.html)?', (req, res)=> {
+//     res.sendFile(path.join(__dirname, 'views', 'users', 'newUser.html'))
+// });
 // Delete
-router.delete('^/$|deleteRecord(.html)?/:id', (req, res)=> {
-    res.sendFile(path.join(__dirname, 'views', 'users', 'deleteRecord.html'))
-});
+// router.delete('^/$|deleteRecord(.html)?/:id', (req, res)=> {
+//     res.sendFile(path.join(__dirname, 'views', 'users', 'deleteRecord.html'))
+// });
 // Update
-router.put('^/$|updateUser(.html)?', (req, res)=> {
-    res.sendFile(path.join(__dirname, 'views', 'users', 'updateUser.html'))
-});
+// router.put('^/$|updateUser(.html)?', (req, res)=> {
+//     res.sendFile(path.join(__dirname, 'views', 'users', 'updateUser.html'))
+// });
 
 
 app.use(router);
